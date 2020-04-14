@@ -1,0 +1,879 @@
+/**
+*
+* Общие стили для всех страниц
+*
+*/
+@import url('https://fonts.googleapis.com/css?family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap&subset=cyrillic,cyrillic-ext');
+@import "mixin.scss";
+@import "animations.scss";
+
+$mainTextColor: #303030;
+$orange: #f6955d;
+$border: #e5e5e5;
+$back: #f9f9f9;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: $mainTextColor;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  cursor: default;
+}
+
+// Общий контейнер
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+//header
+.header {
+  padding: 15px 0;
+  margin-bottom: 35px;
+  border-bottom: 2px solid #e5e5e5;
+  width: 100%;
+  overflow: hidden;
+
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include adaptive(tablet) {
+    flex-wrap: wrap;
+    // justify-content: center;
+  }
+
+  &__navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+
+    @include adaptive(tablet) {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    @include adaptive(smartphone) {
+      flex-wrap: wrap;
+    }
+
+    & a.navbar-logo {
+      width: 45px;
+      height: 45px;
+      margin-right: 55px;
+      background-image: url('/images/icons/logo.jpg');
+      transition: 0.3s ease-in-out;
+      flex: none;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    & .navbar-toggle {
+      display: none;
+      height: 36px;
+      width: 50px;
+      border: 2px solid #6f6f6f;
+      border-radius: 5px;
+      cursor: pointer;
+
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      @include adaptive(smartphone) {
+        display: flex;
+      }
+
+      & span {
+        width: 70%;
+        height: 2px;
+        margin: 2px;
+        background-color: #6f6f6f;
+      }
+
+    }
+
+    & .navbar-menu {
+      @include adaptive(smartphone) {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+        justify-content: center;
+        max-height: 0px;
+        transition: 0.8s ease-in-out;
+        overflow: hidden;
+      }
+
+      @include adaptive(mobile) {
+        align-items: center;
+      }
+
+      &.open {
+        max-height: 250px;
+        margin: 15px 0 0;
+
+      }
+
+      & a.menu-item {
+        text-decoration: none;
+        color: inherit;
+        margin-right: 30px;
+        padding: 10px 0;
+        position: relative;
+
+        &.menuAni {
+          left: 100%;
+          opacity: 0;
+          animation: fromLeft 1s ease forwards;
+        }
+
+        &.active {
+          &::after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background-color: $mainTextColor;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+          }
+        }
+
+        @include adaptive(smartphone) {
+          margin-right: 0;
+        }
+
+        &:last-of-type {
+          margin-right: 0;
+        }
+
+        &::after {
+          content: '';
+          width: 0;
+          height: 2px;
+          background-color: $mainTextColor;
+          transition: 0.3s ease-in-out;
+
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          margin: 0 auto;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+      }
+    }
+
+
+  }
+
+  &__user-box {
+    display: flex;
+
+    @include adaptive(tablet) {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    @include adaptive(mobile) {
+      justify-content: center;
+    }
+
+    & a {
+      text-decoration: none;
+      color: inherit;
+      margin-left: 70px;
+      padding: 5px 0;
+      position: relative;
+
+      @include adaptive(mobile) {
+        margin: 0 20px;
+      }
+
+      &::before {
+        content: '';
+        width: 30px;
+        height: 30px;
+        background-size: contain;
+
+        position: absolute;
+        left: -30px;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+      }
+
+      &.user-box__basket {
+        animation-delay: 2.5s;
+
+        &::before {
+          background-image: url('/images/icons/bascet.png');
+        }
+      }
+
+      &::after {
+        content: '';
+        width: 0;
+        height: 2px;
+        background-color: $mainTextColor;
+        transition: 0.3s ease-in-out;
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0 auto;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+
+    & .user-box__login {
+      color: inherit;
+      margin-left: 70px;
+      padding: 5px 0;
+      position: relative;
+      animation-delay: 2s;
+      cursor: pointer;
+      transition: .8s ease;
+
+      &:hover {
+        transform: scale(1.05);
+        color: $orange;
+      }
+
+      &:before {
+        content: '';
+        width: 30px;
+        height: 30px;
+        left: -30px;
+        top: 2px;
+        position: absolute;
+        background-image: url('/images/icons/account.png');
+      }
+    }
+  }
+
+  // popup автаризации --------------------
+
+  .popup-log {
+    display: none;
+    position: absolute;
+    border: 2px solid #e5e5e5;
+    background-color: rgb(255, 255, 255);
+    padding: 30px;
+    right: 10%;
+    top: 115px;
+    opacity: 0;
+    z-index: 2;
+    transition: .7s;
+    overflow: hidden;
+
+    @include adaptive(notebook) {
+      right: 0;
+    }
+
+    @include adaptive(tablet) {
+      top: 147px;
+    }
+
+    @include adaptive(smartphone) {
+      margin: 0 auto;
+      position: relative;
+      top: 17px;
+    }
+
+    &__close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 25px;
+      height: 25px;
+      opacity: 0.1;
+      transition: .5s;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        background-color: black;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        transform: rotate(135deg);
+      }
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+
+      & input {
+        border: 0;
+        border-bottom: 1px solid #e5e5e5;
+        margin: 10px 0;
+        padding: 5px 10px;
+        width: 100%;
+        color: inherit;
+        font-size: inherit;
+        outline: none;
+        transition: 0.3s;
+        background-color: transparent;
+
+        &:focus {
+          border-bottom: 1px solid $orange;
+        }
+      }
+
+      & .form__group {
+        position: relative;
+
+        & label {
+          position: absolute;
+          font-size: inherit;
+          opacity: 1;
+          transition: .3s;
+          color: #767676;
+          left: 5px;
+          bottom: 15px;
+          z-index: -1;
+        }
+
+        input:focus ~ label,
+        input:not(:placeholder-shown) ~ label {
+          opacity: 0;
+          left: 10%;
+          font-size: 0;
+          bottom: 25px;
+        }
+      }
+
+      & [type="submit"] {
+        background-color: $orange;
+        padding: 8px;
+        color: white;
+        transition: .5s;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #f6651e;
+        }
+
+        &:disabled {
+          cursor: not-allowed;
+          background-color: #c1c1c1;
+        }
+      }
+    }
+
+    & a {
+      text-decoration: none;
+      font-size: inherit;
+      color: inherit;
+      transition: 1s;
+
+      &:hover {
+        color: $orange;
+      }
+    }
+
+    .href-admin {
+      margin: 0 20px 0 0;
+    }
+  }
+
+  //----------------------------------------
+
+  // Popup регистрации новых пользователей -
+
+  .registration {
+    position: fixed;
+    top: 0;
+    bottom: 100%;
+    right: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.91);
+    z-index: 100;
+
+    &__title {
+      font-size: 24px;
+      text-transform: uppercase;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-align: center;
+      cursor: default;
+      margin: 0 0 0 30px;
+
+      @include adaptive(smartphone) {
+        font-size: 16px;
+      }
+    }
+
+    &__error {
+      display: flex;
+      position: absolute;
+      top: 172px;
+      opacity: 0;
+      transition: .5s;
+      font-size: 13px;
+      font-weight: 100;
+      font-style: italic;
+      color: red;
+
+      & img {
+        width: 17px;
+        height: 17px;
+        margin-right: 5px;
+        transform: rotate(-25deg);
+        animation: logError 2s ease infinite alternate;
+      }
+    }
+
+    &__close,
+    & .forgot-popup__close {
+      position: relative;
+      float: right;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #e5e5e5;
+      background-color: #f9f9f9;
+      opacity: 0.1;
+      transition: .5s;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        background-color: black;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        transform: rotate(135deg);
+      }
+    }
+
+    &__popup {
+      position: relative;
+      padding: 20px;
+      width: 30%;
+      margin: 120px auto;
+      background-color: #f9f9f9;
+      border: 1px solid #e5e5e5;
+      opacity: 0;
+      display: none;
+      transition: 1.5s;
+
+      @include adaptive(notebook) {
+        width: 40%;
+      }
+
+      @include adaptive(smartphone) {
+        width: 50%;
+      }
+
+      @include adaptive(mobile) {
+        width: 100%;
+      }
+
+
+      & .flex-box {
+        display: flex;
+        justify-content: space-between;
+
+        @include adaptive(tablet) {
+          display: block;
+        }
+
+        & input {
+          width: 48%;
+
+          @include adaptive(tablet) {
+            width: 100%;
+          }
+        }
+      }
+
+      input {
+        width: 100%;
+        padding: 10px 5px;
+        margin: 15px 0;
+        outline: none;
+        border: 1px solid #e5e5e5;
+      }
+
+      & [type="submit"] {
+        background-color: $orange;
+        color: white;
+        text-transform: uppercase;
+        padding: 15px 0;
+        cursor: pointer;
+        border: 1px solid #ff7115;
+        transition: .5s;
+        letter-spacing: 2px;
+
+        &:hover {
+          background-color: #ff7115;
+        }
+      }
+
+      & [type="checkbox"] {
+        width: 10px;
+        margin-right: 10px;
+      }
+    }
+
+    // Форма забытого пароля
+    .forgot-popup {
+      width: 50%;
+      position: relative;
+      background-color: #f9f9f9;
+      border: 1px solid #e5e5e5;
+      padding: 20px;
+      margin: 120px auto;
+      opacity: 0;
+      display: none;
+      transition: 1.5s;
+
+      @include adaptive(notebook) {
+        width: 60%;
+      }
+
+      @include adaptive(smartphone) {
+        width: 70%;
+      }
+
+      @include adaptive(mobile) {
+        width: 100%;
+      }
+
+      & .flex-box {
+        display: flex;
+      }
+
+      &__error {
+        font-size: 12px;
+        color: red;
+        font-style: italic;
+        transition: 1s;
+        opacity: 0;
+        text-align: center;
+      }
+
+      [type="email"] {
+        width: 80%;
+        padding: 15px;
+        font-size: 15px;
+        margin: 10px 0;
+        border: 1px solid $border;
+        border-right: 0;
+        outline: none;
+      }
+
+      [type="submit"] {
+        width: 20%;
+        padding: 10px;
+        margin: 10px 0;
+        background-color: $orange;
+        border-radius: 0;
+        border-color: orange;
+        transition: .5s;
+        outline: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #f6651e;
+        }
+      }
+    }
+  }
+}
+
+//----------------------------------------
+
+// Окно уведомлений ----------------------
+
+.notice-popup {
+  position: fixed;
+  background-color: white;
+  border: 1px solid #e5e5e5;
+  border-top: 0;
+  top: 0;
+  bottom: 100%;
+  opacity: 0;
+  right: 30%;
+  left: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.8s ease;
+  font-style: italic;
+  z-index: 1000;
+}
+
+//----------------------------------------
+
+// footer
+.footer {
+  margin: 100px 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  @include adaptive(tablet) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  :first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  &__container {
+    flex-basis: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 11%;
+    min-height: 150px;
+    border-left: 1px solid #eaeaea;
+
+    @include adaptive(tablet) {
+      flex-basis: 50%;
+    }
+
+    @include adaptive(mobile) {
+      flex-basis: 100%;
+      align-items: center;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+
+    &:nth-of-type(2) {
+      @include adaptive(tablet) {
+        align-items: flex-end;
+      }
+
+      @include adaptive(mobile) {
+        align-items: center;
+      }
+    }
+
+    &:last-of-type {
+      @include adaptive(tablet) {
+        flex-basis: 100%;
+        padding-left: 0;
+        border-left: none;
+        margin-top: 20px;
+        align-items: center;
+      }
+    }
+
+    & h3.title {
+      text-transform: uppercase;
+      font-size: 1.1em;
+      margin-bottom: 10px;
+    }
+
+    & a.link {
+      text-decoration: none;
+      color: $mainTextColor;
+      position: relative;
+      padding: 6px 0;
+
+      &::before {
+        content: '';
+        height: 2px;
+        width: 0;
+        background-color: $mainTextColor;
+        transition: 0.3s ease-in-out;
+
+        position: absolute;
+        left: 0;
+        bottom: 3px;
+      }
+
+      &:hover::before {
+        width: 100%;
+      }
+    }
+
+    & p.text {
+      margin: 6px 0;
+    }
+
+    & .social {
+      // display: flex;
+
+      & a {
+        color: $mainTextColor;
+        text-decoration: none;
+
+        &::before {
+          font-size: 22px;
+          padding: 5px;
+          border: 1px solid $mainTextColor;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 30px;
+          height: 30px;
+          margin-top: 15px;
+          margin-right: 10px;
+          transition: 0.3s ease-in-out;
+        }
+
+        &:hover::before {
+          color: #fff;
+          background-color: $mainTextColor;
+        }
+      }
+    }
+  }
+}
+
+// Лоадер
+.loader {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: 0.5s;
+  position: absolute;
+  font-size: 15px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: black;
+  background-color: white;
+
+  &__coub {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      right: 50%;
+      top: 0;
+      bottom: 0;
+      margin: 0 auto;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      animation: loaderHor 1.5s ease infinite;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      bottom: 50%;
+      margin: auto 0;
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+      animation: loaderVer 1.5s ease infinite;
+    }
+  }
+
+
+  &.show {
+    opacity: 1;
+    display: flex;
+  }
+}
+
+// Классы с анимациями ------------------
+
+.fromLeft {
+  position: relative;
+  left: -100%;
+  opacity: 0;
+  animation: fromLeft 2s ease forwards;
+}
+
+.fromBottom {
+  position: relative;
+  bottom: -100%;
+  opacity: 0;
+  animation: fromBot 2s ease forwards;
+}
+
+.fromRight {
+  position: relative;
+  right: -100%;
+  opacity: 0;
+  animation: fromRight 2s ease forwards;
+}
+
+.fromTop {
+  position: relative;
+  top: -100%;
+  opacity: 0;
+  animation: fromTop 2s ease forwards;
+}
+
+.centre {
+  position: relative;
+  opacity: 0;
+  animation: centre 2s ease forwards;
+}
+
+.noticeAni {
+  animation: notice 3s ease forwards;
+}
+
+.openReg {
+  overflow: auto;
+  animation: openReg 0.5s ease forwards;
+}
+
+//---------------------------------------

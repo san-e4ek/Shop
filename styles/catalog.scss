@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Old+Standard+TT&display=swap');
+
+.catalog {
+  position: relative;
+  min-height: 100vh;
+
+  &-header {
+    text-align: center;
+    padding: 30px 0;
+  }
+
+  &-title {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    color: rgb(39, 39, 39);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &-subtitle {
+    margin-top: 10px;
+    font-family: 'Old Standard TT', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: rgb(39, 39, 39);
+    letter-spacing: 1px;
+  }
+
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 30px;
+  }
+
+  &-item {
+    width: 80%;
+    text-align: center;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+    transition: .5s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &__img {
+      height: 255px;
+      border: 1px solid #c8c8c8;
+      background-size: 80% auto;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &__name {
+      margin: 20px 0 10px;
+      font-weight: bold;
+    }
+  }
+}
+
+.label-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.form-group {
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 10%;
+    right: 0%;
+    bottom: -4px;
+    height: 1px;
+    background: black;
+  }
+}
+
+.label {
+  width: 180px;
+  margin-left: 20px;
+  border: 0px;
+  background: white;
+  font-style: italic;
+  color: grey;
+  font-size: inherit;
+  font-family: 'Old Standard TT', serif;
+}
+
+.page-wrap {
+  justify-content: center;
+  display: flex;
+}
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 7px;
+  width: 30px;
+  height: 30px;
+  color: white;
+  background-color: rgb(31, 31, 31);
+  font-family: 'Source Sans Pro', sans-serif;
+  cursor: pointer;
+
+  &:hover,
+  &.active {
+    background-color: white;
+    color: #000;
+    border: 1px solid black;
+  }
+}

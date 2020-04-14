@@ -1,0 +1,155 @@
+//Для basket.php ------------------------------
+@keyframes Revers {
+  20%,
+  40% {
+    transform: rotate(45deg);
+  }
+
+  60%,
+  80% {
+    transform: rotate(225deg);
+  }
+}
+
+@keyframes fromTop {
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+@keyframes fromBot {
+  100% {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+
+//----------------------------------------------
+
+// Для index.php и header ----------------------
+
+
+@keyframes offerItem_Vertical {
+  100% {
+    top: 10%;
+    bottom: 10%;
+  }
+}
+
+@keyframes offerItem_Horizon {
+  100% {
+    left: 10%;
+    right: 10%;
+  }
+}
+
+@keyframes fromLeft {
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fromBot {
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fromRight {
+  100% {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fromTop {
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes centre {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes logError {
+  20% {
+    transform: rotate(0);
+  }
+
+  80% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(25deg);
+  }
+}
+
+//------------------------------------------------
+
+// Для preloader ---------------------------------
+
+@keyframes loaderHor {
+  100% {
+    right: 50%;
+    left: 50%;
+  }
+
+  50% {
+    right: 0;
+    left: 0;
+  }
+}
+
+@keyframes loaderVer {
+  100% {
+    top: 50%;
+    bottom: 50%;
+  }
+
+  50% {
+    top: 0;
+    bottom: 0;
+  }
+}
+
+//------------------------------------------------
+
+// Для окна уведомлений --------------------------
+
+@keyframes notice {
+  20% {
+    bottom: 80%;
+    opacity: 1;
+  }
+
+  80% {
+    bottom: 80%;
+    opacity: 1;
+  }
+
+  100% {
+    bottom: 100%;
+    opacity: 0;
+  }
+}
+
+//------------------------------------------------
+
+// Open/close popup ------------------------------
+
+@keyframes openReg {
+  100% {
+    display: block;
+    bottom: 0;
+  }
+}
+
+//------------------------------------------------

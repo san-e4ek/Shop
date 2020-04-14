@@ -1,0 +1,19 @@
+@mixin adaptive($device) {
+    @if ($device == mobile) {
+        @media (max-width: 575px) {
+            @content;
+        }
+    } @else if ($device == smartphone) {
+        @media (max-width: 767px) {
+            @content;
+        }
+    } @else if ($device == tablet) {
+        @media (max-width: 991px) {
+            @content;
+        }
+    } @else if ($device == notebook) {
+        @media (max-width: 1199px) {
+            @content;
+        }
+    }
+}

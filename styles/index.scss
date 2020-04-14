@@ -1,0 +1,418 @@
+$mainTextColor: #303030;
+$borderColor: #959595;
+
+@import "mixin.scss";
+@import "animations.scss";
+
+.offer {
+  text-align: center;
+  overflow: hidden;
+
+  &__title {
+    font-size: 72px;
+    font-weight: normal;
+    text-transform: uppercase;
+    position: relative;
+    opacity: 0;
+    top: -100px;
+    animation: fromTop 1s ease forwards;
+    animation-delay: 1.5s;
+    z-index: 1;
+
+
+    @include adaptive(smartphone) {
+      font-size: 50px;
+    }
+
+    @include adaptive(mobile) {
+      font-size: 34px;
+    }
+  }
+
+  &__text {
+    font-size: 24px;
+    font-family: Georgia, serif;
+    font-style: italic;
+    color: $borderColor;
+    position: relative;
+    bottom: -100px;
+    opacity: 0;
+    animation: fromBot 1.5s ease forwards;
+
+    @include adaptive(mobile) {
+      font-size: 20px;
+    }
+
+  }
+
+  & a {
+    display: inline-block;
+    margin: 60px auto 40px;
+    padding: 25px 35px;
+    border: 1px solid $borderColor;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s ease-in-out;
+    animation-delay: 1.5s;
+    
+    @include adaptive(tablet) {
+      margin: 30px auto 30px;
+    }
+
+    @include adaptive(mobile) {
+      padding: 15px 25px;
+      font-size: 14px;
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: $borderColor;
+    }
+  }
+
+  &__grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 280px);
+
+    @include adaptive(notebook) {
+      grid-template-rows: repeat(3, 250px);
+    }
+    @include adaptive(tablet) {
+      grid-template-rows: repeat(3, 200px);
+    }
+    @include adaptive(smartphone) {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(4, 180px);
+    }
+    @include adaptive(mobile) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(6, minmax(150px, auto));
+    }
+
+    & .item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      padding: 20%;
+      overflow: hidden;
+      transition: 1s;
+      position: relative;
+
+      &:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+        z-index: 1;
+      }
+
+      &:hover:before {
+         content: '';
+         position: absolute;
+         top: 50%;
+         left: 15%;
+         right: 15%;
+         bottom: 50%;
+         border-left: 1px solid white;
+         border-right: 1px solid white;
+         animation: offerItem_Vertical 0.5s ease forwards;
+       }
+
+      &:hover:after {
+        content: '';
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        right: 50%;
+        bottom: 15%;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        animation: offerItem_Horizon 0.5s ease forwards;
+      }
+
+      @include adaptive(notebook) {
+        padding: 10%;
+      }
+
+      @include adaptive(smartphone) {
+        padding: 2%;
+      }
+
+      &:nth-of-type(1) {
+        grid-row: 1/3;
+        background-image: url('/images/index/1.jpg');
+        background-size: cover;
+        background-position-x: center;
+      }
+
+      &:nth-of-type(2) {
+        background-color: #bbbbbb;
+
+        @include adaptive(smartphone) {
+          grid-row: 2/3;
+          grid-column: 2/3;
+        }
+      }
+
+      &:nth-of-type(3) {
+        background-image: url('/images/index/3.jpg');
+        background-size: cover;
+
+        @include adaptive(mobile) {
+          grid-row: 3/4;
+          grid-column: 2/3;
+        }
+
+      }
+
+      &:nth-of-type(4) {
+        background-color: #606060;
+
+        @include adaptive(mobile) {
+          grid-row: 3/4;
+          grid-column: 1/2;
+        }
+
+        & .item-arrow {
+          @include adaptive(mobile) {
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      &:nth-of-type(5) {
+        background-image: url('/images/index/2.jpg');
+        background-size: cover;
+      }
+
+      &:nth-of-type(6) {
+        background-color: #bbbbbb;
+      }
+
+      &:nth-of-type(7) {
+        grid-column: 4/5;
+        grid-row: 2/4;
+        background-image: url('/images/index/4.jpg');
+        background-size: cover;
+
+        @include adaptive(smartphone) {
+          grid-column: 3/4;
+          grid-row: 3/5;
+        }
+        @include adaptive(mobile) {
+          grid-column: 1/2;
+          grid-row: 5/7;
+        }
+      }
+
+      &:nth-of-type(8) {
+        background-image: url('/images/index/5.jpg');
+        background-size: cover;
+        background-position-x: center;
+      }
+
+      &:nth-of-type(9) {
+        background-color: #606060;
+
+        @include adaptive(smartphone) {
+          grid-row: 4/5;
+          grid-column: 2/3;
+        }
+        @include adaptive(mobile) {
+          flex-direction: column-reverse;
+        }
+
+        & .item-arrow {
+          @include adaptive(smartphone) {
+            transform: rotate(90deg);
+          }
+          @include adaptive(mobile) {
+            transform: rotate(270deg);
+          }
+        }
+      }
+
+      &:nth-of-type(10) {
+        background-image: url('/images/index/6.jpg');
+        background-size: cover;
+      }
+
+      &-title {
+        font-size: 24px;
+        text-transform: uppercase;
+        font-weight: normal;
+
+        @include adaptive(mobile) {
+          font-size: 14px;
+        }
+      }
+
+      &-new {
+        font-size: 18px;
+        text-transform: uppercase;
+        font-style: italic;
+        font-weight: normal;
+
+        @include adaptive(mobile) {
+          font-size: 12px;
+        }
+      }
+
+      &-alert {
+        height: 35px;
+        width: 35px;
+        margin-bottom: 10px;
+        background-image: url('/images/icons/attention-sign-outline.png');
+        background-size: cover;
+        position: relative;
+
+        @include adaptive(mobile) {
+          height: 25px;
+          width: 25px;
+          margin-bottom: 5px;
+        }
+
+        &::before, &::after {
+          content: '';
+          height: 1px;
+          width: 22px;
+          background-color: #fff;
+
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto 0;
+        }
+
+        &::before {
+          left: -30px;
+        }
+
+        &::after {
+          right: -30px;
+        }
+
+      }
+
+      &-text {
+        font-size: 14px;
+        line-height: 19px;
+        font-family: Georgia, serif;
+        font-style: italic;
+
+        @include adaptive(mobile) {
+          font-size: 10px;
+        }
+      }
+
+      &-price {
+        font-size: 18px;
+        font-family: Georgia, serif;
+        font-style: italic;
+
+        @include adaptive(mobile) {
+          font-size: 12px;
+        }
+      }
+
+      &-arrow {
+        font-size: 36px;
+
+        @include adaptive(mobile) {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+.subscribe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  margin: 200px 0 150px;
+
+  @include adaptive(tablet) {
+    margin: 100px 0 50px;
+  }
+
+  &__title {
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: normal;
+
+    @include adaptive(mobile) {
+      font-size: 32px;
+    }
+  }
+
+  &__text {
+    color: #606060;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    margin: 10px 0 40px;
+
+    @include adaptive(mobile) {
+      font-size: 16px;
+    }
+
+  }
+
+  &__form {
+    width: 50%;
+    display: inline-flex;
+
+    @include adaptive(notebook) {
+      width: 60%;
+    }
+    @include adaptive(tablet) {
+      width: 75%;
+    }
+    @include adaptive(smartphone) {
+      width: 90%;
+    }
+    @include adaptive(mobile) {
+      width: 100%;
+    }
+
+    & .input-email {
+      flex-basis: 77%;
+      padding: 10px;
+      font-style: italic;
+      border: 1px solid $borderColor;
+      border-right: none;
+      outline: none;
+    }
+
+    & .input-submit {
+      flex-basis: 23%;
+      padding: 20px 0;
+      cursor: pointer;
+      color: #fff;
+      background-color: #f68236;
+      border: 1px solid #e67429;
+      outline: none;
+    }
+  }
+
+  &__error {
+    font-size: 14px;
+    color: red;
+    font-style: italic;
+    margin-top: 20px;
+    transition: 1s;
+    opacity: 0;
+
+    @include adaptive(mobile) {
+      font-size: 12px;
+    }
+  }
+}
+
+

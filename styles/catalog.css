@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Old+Standard+TT&display=swap");
+.catalog {
+  position: relative;
+  min-height: 100vh;
+}
+.catalog-header {
+  text-align: center;
+  padding: 30px 0;
+}
+.catalog-title {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 300;
+  color: #272727;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.catalog-subtitle {
+  margin-top: 10px;
+  font-family: "Old Standard TT", serif;
+  font-style: italic;
+  font-weight: 300;
+  color: #272727;
+  letter-spacing: 1px;
+}
+.catalog-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 30px;
+}
+.catalog-item {
+  width: 80%;
+  text-align: center;
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  transition: 0.5s ease;
+}
+.catalog-item:hover {
+  transform: scale(1.05);
+}
+.catalog-item__img {
+  height: 255px;
+  border: 1px solid #c8c8c8;
+  background-size: 80% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.catalog-item__name {
+  margin: 20px 0 10px;
+  font-weight: bold;
+}
+
+.label-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.form-group {
+  position: relative;
+}
+.form-group:after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 0%;
+  bottom: -4px;
+  height: 1px;
+  background: black;
+}
+
+.label {
+  width: 180px;
+  margin-left: 20px;
+  border: 0px;
+  background: white;
+  font-style: italic;
+  color: grey;
+  font-size: inherit;
+  font-family: "Old Standard TT", serif;
+}
+
+.page-wrap {
+  justify-content: center;
+  display: flex;
+}
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 7px;
+  width: 30px;
+  height: 30px;
+  color: white;
+  background-color: #1f1f1f;
+  font-family: "Source Sans Pro", sans-serif;
+  cursor: pointer;
+}
+.page:hover, .page.active {
+  background-color: white;
+  color: #000;
+  border: 1px solid black;
+}
+
+/*# sourceMappingURL=catalog.css.map */

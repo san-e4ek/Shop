@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+</head>
+<body>
+
+
+<!--<div id="root">-->
+<!--    {{message}}-->
+<!--    {{user}}-->
+<!--</div>-->
+
+<div id="game">
+    <div class="result">{{result}}</div>
+    <div class="count">{{count}}</div>
+    <div class="seconds">{{seconds}}</div>
+    <div class="buttons">
+        <button v-if="!isStart" v-on:click="startGame" class="start">Начать игру</button>
+        <button v-if="isStart" v-on:click="onClick" :disabled="seconds === 0" class="click">Клик</button>
+        <button v-if="isStart" v-on:click="restartGame" class="restart">Начать игру заново</button>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
